@@ -14,8 +14,9 @@ public class MouseDraw implements MouseInputListener {
         if(xCoord < GUIFrame.getWIDTH() &&
                 yCoord < GUIFrame.getHEIGHT() &&
                 !Main.isRunning()) {
+            System.out.println(xCoord);
             Simulation.getCells()[xCoord/Cell.CELL_SIZE][yCoord/Cell.CELL_SIZE].setAlive(true);
-            Simulation.getCells()[xCoord][yCoord].setNextRound(true);
+            Simulation.getCells()[xCoord/Cell.CELL_SIZE][yCoord/Cell.CELL_SIZE].setNextRound(true);
         }
     }
 

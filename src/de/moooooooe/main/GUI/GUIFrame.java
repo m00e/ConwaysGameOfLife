@@ -17,7 +17,8 @@ public class GUIFrame extends JFrame {
         super("Conway's Game of Life");
         this.pack();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setSize(WIDTH, HEIGHT+50); // Size of actual window
+        this.setSize(new Dimension(WIDTH, HEIGHT+50)); // Size of actual window
+        this.setResizable(false);
         this.setLayout(new BorderLayout());
 
         this.add(new GUILabel(), BorderLayout.CENTER);
