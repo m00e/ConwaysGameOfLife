@@ -7,7 +7,7 @@ import de.moooooooe.main.ConwayMain;
 import javax.swing.event.MouseInputListener;
 import java.awt.event.MouseEvent;
 
-public class MouseDraw implements MouseInputListener {
+public class MouseListener implements MouseInputListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         int xCoord = e.getLocationOnScreen().x, yCoord = e.getLocationOnScreen().y;
@@ -15,6 +15,7 @@ public class MouseDraw implements MouseInputListener {
                 yCoord < GUIFrame.getHEIGHT() &&
                 !ConwayMain.isRunning()) {
             System.out.println(xCoord);
+            System.out.println(Simulation.getCells()[xCoord/Cell.CELL_SIZE][yCoord/Cell.CELL_SIZE]);
             Simulation.getCells()[xCoord/Cell.CELL_SIZE][yCoord/Cell.CELL_SIZE].setAlive(true);
             Simulation.getCells()[xCoord/Cell.CELL_SIZE][yCoord/Cell.CELL_SIZE].setNextRound(true);
         }

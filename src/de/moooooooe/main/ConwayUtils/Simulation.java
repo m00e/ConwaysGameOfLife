@@ -19,7 +19,7 @@ public class Simulation {
     private static final int HEIGHT = GUIFrame.getHEIGHT()/Cell.CELL_SIZE;
     private static int generation;
 
-    static Random random; // For randomly determining where to set alive cells
+    static Random random; // For randomly determining where to set living cells
 
     public Simulation() {
         random = new Random();
@@ -38,7 +38,7 @@ public class Simulation {
     }
 
     /**
-     * Updates the cell according to the rules of "Conway's Game of Life".
+     * Updates the cells according to the rules of "Conway's Game of Life".
      */
     public void update() {
         generation++;

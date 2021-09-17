@@ -8,10 +8,9 @@ import java.awt.*;
 public class GUIFrame extends JFrame {
 
     private static Simulation sim;
-    private final static int WIDTH = 1000; // Size of Simulation
-    private final static int HEIGHT = 800;
+    private final static int WIDTH = 1000, HEIGHT = 800; // Size of Simulation
     private static float tslu; // = Time since last update
-    private static float pause = 1f;
+    private static float pause = 1f; // = Standard delay between generations
 
     public GUIFrame() {
         super("Conway's Game of Life");
@@ -23,7 +22,6 @@ public class GUIFrame extends JFrame {
 
         this.add(new GUILabel(), BorderLayout.CENTER);
         this.add(new ControlPanel(), BorderLayout.SOUTH);
-        this.addMouseListener(new MouseDraw());
 
         sim = new Simulation();
         tslu = 0;
@@ -54,11 +52,16 @@ public class GUIFrame extends JFrame {
      */
     private class GUILabel extends JLabel {
 
+        public GUILabel() {
+            this.addMouseListener(new MouseListener());
+        }
+
         @Override
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
             sim.draw(g);
         }
+
     }
 
     public static int getWIDTH() {

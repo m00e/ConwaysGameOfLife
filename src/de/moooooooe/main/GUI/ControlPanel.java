@@ -1,6 +1,5 @@
 package de.moooooooe.main.GUI;
 
-import com.sun.tools.javac.Main;
 import de.moooooooe.main.ConwayMain;
 import de.moooooooe.main.ConwayUtils.Simulation;
 
@@ -13,9 +12,9 @@ import java.awt.event.ActionListener;
 
 public class ControlPanel extends JPanel {
 
-    private JButton startButton, stopButton, newButton;
-    private static JLabel genLabel, speedLabel;
-    private static JSlider speedController;
+    private JButton startBtn, stopBtn, newBtn;
+    private static JLabel genLbl, speedLbl;
+    private static JSlider slider;
     private JPanel[] panels;
 
     public ControlPanel() {
@@ -28,32 +27,31 @@ public class ControlPanel extends JPanel {
     }
 
     private void init() {
-        // Init all panels
+        // Initialize all panels
         panels = new JPanel[3];
         for(int i = 0; i < panels.length; i++) {
             panels[i] = new JPanel();
         }
 
         /* Button Panel */
-        startButton = new JButton("Start");
-        startButton.addActionListener(new ActionListener() {
+        startBtn = new JButton("Start");
+        startBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ConwayMain.setRunning(true);
             }
         });
 
-        stopButton = new JButton("Stop");
-        stopButton.addActionListener(new ActionListener() {
+        stopBtn = new JButton("Stop");
+        stopBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ConwayMain.setRunning(false);
-
             }
         });
 
-        newButton = new JButton("New Pattern");
-        newButton.addActionListener(new ActionListener() {
+        newBtn = new JButton("New Pattern");
+        newBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ConwayMain.setRunning(false);
@@ -61,32 +59,32 @@ public class ControlPanel extends JPanel {
                 setGen(0);
             }
         });
-        panels[0].add(startButton);
-        panels[0].add(stopButton);
-        panels[0].add(newButton);
+        panels[0].add(startBtn);
+        panels[0].add(stopBtn);
+        panels[0].add(newBtn);
 
-        /* Speed Panel */
-        speedLabel = new JLabel("Speed");
-        speedLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        // Speed Panel
+        speedLbl = new JLabel("Speed");
+        speedLbl.setFont(new Font("SansSerif", Font.PLAIN, 18));
 
-        // Value of JSlider = circa amount of generations per second.
-        speedController = new JSlider(JSlider.HORIZONTAL, 1, 1000, 1);
-        speedController.setMajorTickSpacing(500);
-        speedController.setPaintTicks(true);
-        speedController.addChangeListener(new ChangeListener() {
+        // Value of slider = circa amount of generations per second.
+        slider = new JSlider(JSlider.HORIZONTAL, 1, 1000, 1);
+        slider.setMajorTickSpacing(500);
+        slider.setPaintTicks(true);
+        slider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                GUIFrame.editPause(speedController.getValue());
+                GUIFrame.editPause(slider.getValue());
             }
         });
 
-        panels[1].add(speedLabel);
-        panels[1].add(speedController);
+        panels[1].add(speedLbl);
+        panels[1].add(slider);
 
         // Generation-Display Panel
-        genLabel = new JLabel("Generation: " + Simulation.getGeneration());
-        genLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        panels[2].add(genLabel);
+        genLbl = new JLabel("Generation: " + Simulation.getGeneration());
+        genLbl.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        panels[2].add(genLbl);
     }
 
     /**
@@ -95,6 +93,6 @@ public class ControlPanel extends JPanel {
      */
     public static void setGen(int gen) {
         // Have to add 1 to generation count because 0 will be displayed two times.
-        genLabel.setText("Generation: " + gen);
+        genLbl.setText("Generation: " + gen);
     }
 }

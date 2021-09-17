@@ -17,17 +17,17 @@ public class ConwayMain {
         lastFrame = System.currentTimeMillis();
         while(true) {
             if(!running) {
+                // Stop button doesn't work properly without 100ms delay.
                 try {
-                    // Stop button doesn't properly work without 100ms delay.
                     Thread.sleep(100);
-                    continue;
                 } catch(InterruptedException exc) {
                     exc.printStackTrace();
                 }
+                continue;
             }
-            long thisFrame = System.currentTimeMillis();
-            float tslf = (float) ((thisFrame - lastFrame) / 1000.0);
-            lastFrame = thisFrame;
+            long currFrame = System.currentTimeMillis();
+            float tslf = (float) ((currFrame - lastFrame) / 1000.0);
+            lastFrame = currFrame;
 
             f.updateState(tslf);
             f.repaint();
@@ -42,12 +42,5 @@ public class ConwayMain {
 
     public static boolean isRunning() {
         return running;
-    }
-    private static void sleep(long millis) {
-        try {
-            Thread.sleep(millis);
-        } catch(InterruptedException exc) {
-            exc.printStackTrace();
-        }
     }
 }

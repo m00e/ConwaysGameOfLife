@@ -4,11 +4,12 @@ import java.awt.*;
 
 public class Cell {
 
-    private int x;
-    private int y;
+    private int x, y;
+    public static final int CELL_SIZE = 10;
+
     private boolean alive;
     private boolean nextRound;
-    public static final int CELL_SIZE = 10;
+
 
     public Cell(int x, int y) {
         this.x = x;
