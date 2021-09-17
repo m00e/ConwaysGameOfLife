@@ -2,7 +2,7 @@ package de.moooooooe.main.GUI;
 
 import de.moooooooe.main.ConwayUtils.Cell;
 import de.moooooooe.main.ConwayUtils.Simulation;
-import de.moooooooe.main.Main;
+import de.moooooooe.main.ConwayMain;
 
 import javax.swing.event.MouseInputListener;
 import java.awt.event.MouseEvent;
@@ -13,7 +13,7 @@ public class MouseDraw implements MouseInputListener {
         int xCoord = e.getLocationOnScreen().x, yCoord = e.getLocationOnScreen().y;
         if(xCoord < GUIFrame.getWIDTH() &&
                 yCoord < GUIFrame.getHEIGHT() &&
-                !Main.isRunning()) {
+                !ConwayMain.isRunning()) {
             System.out.println(xCoord);
             Simulation.getCells()[xCoord/Cell.CELL_SIZE][yCoord/Cell.CELL_SIZE].setAlive(true);
             Simulation.getCells()[xCoord/Cell.CELL_SIZE][yCoord/Cell.CELL_SIZE].setNextRound(true);
@@ -25,7 +25,7 @@ public class MouseDraw implements MouseInputListener {
         int xCoord = e.getLocationOnScreen().x, yCoord = e.getLocationOnScreen().y;
         if(xCoord < GUIFrame.getWIDTH() &&
                 yCoord < GUIFrame.getHEIGHT() &&
-                !Main.isRunning()) {
+                !ConwayMain.isRunning()) {
             Simulation.getCells()[xCoord][yCoord].setAlive(true);
             Simulation.getCells()[xCoord][yCoord].setNextRound(true);
         }

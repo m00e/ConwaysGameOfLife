@@ -19,7 +19,7 @@ public class Simulation {
     private static final int HEIGHT = GUIFrame.getHEIGHT()/Cell.CELL_SIZE;
     private static int generation;
 
-    static Random random;
+    static Random random; // For randomly determining where to set alive cells
 
     public Simulation() {
         random = new Random();

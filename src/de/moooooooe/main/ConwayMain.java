@@ -4,7 +4,7 @@ import de.moooooooe.main.ConwayUtils.Simulation;
 import de.moooooooe.main.GUI.ControlPanel;
 import de.moooooooe.main.GUI.GUIFrame;
 
-public class Main {
+public class ConwayMain {
     private static boolean running;
     private static long lastFrame;
     private static GUIFrame f;
@@ -17,9 +17,13 @@ public class Main {
         lastFrame = System.currentTimeMillis();
         while(true) {
             if(!running) {
-                // Sleeping is necessary for the simulation to run again if "start"-button is pressed.
-                sleep(100);
-                continue;
+                try {
+                    // Stop button doesn't properly work without 100ms delay.
+                    Thread.sleep(100);
+                    continue;
+                } catch(InterruptedException exc) {
+                    exc.printStackTrace();
+                }
             }
             long thisFrame = System.currentTimeMillis();
             float tslf = (float) ((thisFrame - lastFrame) / 1000.0);

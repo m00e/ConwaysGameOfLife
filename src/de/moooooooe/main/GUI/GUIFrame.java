@@ -42,7 +42,7 @@ public class GUIFrame extends JFrame {
     }
 
     /**
-     * Change pause time/Amount of generations per second.
+     * Change pause time respectively amount of generations per second.
      * pause = 1/speedControllerValue
      */
     public static void editPause(int speedControllerValue) {

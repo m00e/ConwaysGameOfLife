@@ -1,7 +1,8 @@
 package de.moooooooe.main.GUI;
 
+import com.sun.tools.javac.Main;
+import de.moooooooe.main.ConwayMain;
 import de.moooooooe.main.ConwayUtils.Simulation;
-import de.moooooooe.main.Main;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -38,7 +39,7 @@ public class ControlPanel extends JPanel {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.setRunning(true);
+                ConwayMain.setRunning(true);
             }
         });
 
@@ -46,16 +47,16 @@ public class ControlPanel extends JPanel {
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.setRunning(false);
+                ConwayMain.setRunning(false);
 
             }
         });
 
-        newButton = new JButton("New");
+        newButton = new JButton("New Pattern");
         newButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Main.setRunning(false);
+                ConwayMain.setRunning(false);
                 Simulation.initSimulation();
                 setGen(0);
             }
@@ -82,14 +83,14 @@ public class ControlPanel extends JPanel {
         panels[1].add(speedLabel);
         panels[1].add(speedController);
 
-        /* Generation-Display Panel */
+        // Generation-Display Panel
         genLabel = new JLabel("Generation: " + Simulation.getGeneration());
         genLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
         panels[2].add(genLabel);
     }
 
     /**
-     * Set the counter to a certain integer.
+     * Set the generation counter to a certain integer.
      * @param gen
      */
     public static void setGen(int gen) {

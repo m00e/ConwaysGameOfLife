@@ -15,15 +15,16 @@ public class Cell {
         this.y = y;
     }
 
+    /**
+     * Draws the cells with the according color (alive = black, not alive = white)
+     * @param g
+     */
     public void draw(Graphics g) {
         g.setColor(Color.black);
         g.drawRect(x*CELL_SIZE, y*CELL_SIZE, CELL_SIZE, CELL_SIZE);
 
-        if(alive) {
-            g.setColor(Color.black);
-        } else {
-            g.setColor(Color.white);
-        }
+        if(!alive) g.setColor(Color.white);
+
         g.fillRect(x*CELL_SIZE+1, y*CELL_SIZE+1, CELL_SIZE-1, CELL_SIZE-1);
     }
 
@@ -35,6 +36,11 @@ public class Cell {
         this.alive = alive;
     }
 
+    /**
+     * Determines whether a cell survived the current round or not.
+     * If it doesn't, the cell is removed in the next round.
+     * @param nextRound
+     */
     public void setNextRound(boolean nextRound) {
         this.nextRound = nextRound;
     }
